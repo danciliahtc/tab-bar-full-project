@@ -7,7 +7,7 @@
 
 import UIKit
 
-class JobBoardViewController: UIViewController, UITableViewDataSource {
+class JobBoardViewController: UIViewController {
     
     let jobBoardPost = [
         JobBoardPost(jobTitle: "Senior Software Engineer", companyName: "Apple", jobDesc: "10 years of Exp", jobSalary: "$150k"),
@@ -24,6 +24,10 @@ class JobBoardViewController: UIViewController, UITableViewDataSource {
         tableView.dataSource = self
     }
     
+}
+
+extension JobBoardViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return jobBoardPost.count
     }
@@ -39,4 +43,5 @@ class JobBoardViewController: UIViewController, UITableViewDataSource {
         
         return cell ?? UITableViewCell()
     }
+    
 }

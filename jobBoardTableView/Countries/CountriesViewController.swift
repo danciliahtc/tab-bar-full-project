@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CountriesViewController: UIViewController, UICollectionViewDataSource {
+class CountriesViewController: UIViewController {
     
     
     var countries: [Country] = []
@@ -21,9 +21,23 @@ class CountriesViewController: UIViewController, UICollectionViewDataSource {
         
         collectionView.dataSource = self
         
+        let layout = UICollectionViewFlowLayout()
+        
+        let width = collectionView.frame.width
+        layout.itemSize = CGSize(width: width, height: 100)
+        
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 10
+        
+        collectionView.collectionViewLayout = layout
+        
        countries = localDataManager.readLocalJsonFile(name: "countries.json")
             self.collectionView.reloadData()
     }
+    
+}
+
+extension CountriesViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return countries.count
@@ -36,5 +50,6 @@ class CountriesViewController: UIViewController, UICollectionViewDataSource {
         cell.configure(with: country)
         return cell
     }
+    
 }
 

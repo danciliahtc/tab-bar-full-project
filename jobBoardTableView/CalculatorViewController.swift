@@ -39,8 +39,8 @@ class CalculatorViewController: UIViewController {
     @IBAction func operationPressed(_ sender: UIButton) {
         isTypingNumber = false
         
-        print("Operation button title: \(sender.currentTitle ?? "No title")")
-        if let operation = sender.currentTitle {
+        print("Operation button title: \(sender.titleLabel?.text)")
+        if let operation = sender.titleLabel?.text {
             firstNumber = Double(displayLabel.text!) ?? 0
             currentOperation = operation // gets operation symbol (+, -, x, /)
             print("Operation \(currentOperation)")
